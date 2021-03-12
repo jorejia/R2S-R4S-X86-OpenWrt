@@ -5,7 +5,7 @@ clear
 #wget -qO - https://patch-diff.githubusercontent.com/raw/openwrt/openwrt/pull/3875.patch | patch -p1
 
 #使用O2级别的优化
-sed -i 's/Os/O2/g' include/target.mk
+sed -i 's/Os/O3/g' include/target.mk
 #更新feed
 ./scripts/feeds update -a
 ./scripts/feeds install -a -f
@@ -123,8 +123,8 @@ svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-baidupcs
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/baidupcs-web package/lean/baidupcs-web
 #diskman
 git clone --depth 1 https://github.com/SuLingGG/luci-app-diskman.git package/new/luci-app-diskman
-mkdir ./package/new/luci-app-diskman/parted
-cp ./packages/new/luci-app-diskman/Parted.Makefile ./packages/new/luci-app-diskman/parted/Makefile
+mkdir package/new/luci-app-diskman/parted
+cp package/new/luci-app-diskman/Parted.Makefile package/new/luci-app-diskman/parted/Makefile
 #迅雷快鸟
 git clone --depth 1 https://github.com/garypang13/luci-app-xlnetacc.git package/lean/luci-app-xlnetacc
 #DDNS
@@ -198,9 +198,7 @@ svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ipt2socks package
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/simple-obfs package/lean/simple-obfs
 svn co https://github.com/coolsnowwolf/packages/trunk/net/shadowsocks-libev package/lean/shadowsocks-libev
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/trojan package/lean/trojan
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/tcpping package/lean/tcpping
 svn co https://github.com/fw876/helloworld/trunk/naiveproxy package/lean/naiveproxy
-svn co https://github.com/fw876/helloworld/trunk/ipt2socks-alt package/lean/ipt2socks-alt
 #PASSWALL
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk/luci-app-passwall package/new/luci-app-passwall
 sed -i 's,default n,default y,g' package/new/luci-app-passwall/Makefile
@@ -285,7 +283,9 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-aliddns packag
 #WOL
 svn co https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-services-wolplus package/new/luci-app-services-wolplus
 #Docker
-sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
+#sed -i 's/+docker/+docker \\\n\t+dockerd/g' ./feeds/luci/applications/luci-app-dockerman/Makefile
+rm -rf ./feeds/luci/applications/luci-app-dockerman
+cp -rf ../openwrt-lienol/package/diy/luci-app-dockerman ./feeds/luci/applications/luci-app-dockerman
 
 ##最后的收尾工作
 #Lets Fuck
