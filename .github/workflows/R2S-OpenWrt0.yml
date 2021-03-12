@@ -84,7 +84,7 @@ jobs:
         df -h
         cd openwrt
         let make_process=$(nproc)-1
-        make -j{make_process} V=s
+        make -j${make_process} V=s
         echo $?
     - name: Cleaning
       run: |
