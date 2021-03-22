@@ -88,8 +88,8 @@ svn co https://github.com/immortalwrt/immortalwrt/branches/master/tools/ucl tool
 ### 获取额外的 LuCI 应用、主题和依赖 ###
 # diskman
 git clone --depth 1 https://github.com/SuLingGG/luci-app-diskman.git package/new/luci-app-diskman
-mkdir ./papackage/new/parted
-cp ./papackage/new/luci-app-diskman/Parted.Makefile ./papackage/new/parted/Makefile
+mkdir ./package/new/parted
+cp ./package/new/luci-app-diskman/Parted.Makefile ./package/new/parted/Makefile
 # ddnsto
 git clone --depth 1 https://github.com/linkease/ddnsto-openwrt.git package/network/services/ddnsto-openwrt
 # 访问控制
